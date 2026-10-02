@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGRO-MOTOR | Maquinaria Agrícola y Accesorios</title>
+  <meta name="description" content="AGRO-MOTOR - Equipos agrícolas, accesorios y asesoría experta para el pequeño y mediano agricultor en Ecuador. Envíos a nivel nacional desde Milagro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            agro: {
+              green: '#1B7A3D',
+              'green-dark': '#0F4D26',
+              'green-light': '#2E9B55',
+              orange: '#F97316',
+              'orange-dark': '#EA580C',
+              'orange-light': '#FB923C',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Poppins', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --agro-green: #1B7A3D;
+      --agro-green-dark: #0F4D26;
+      --agro-orange: #F97316;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-display { font-family: 'Poppins', 'Inter', sans-serif; }
+    
+    /* Hero overlay */
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(15,77,38,0.85) 0%, rgba(27,122,61,0.7) 50%, rgba(15,77,38,0.6) 100%);
+    }
+    
+    /* Card hover */
+    .product-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -10px rgba(27, 122, 61, 0.25);
+    }
+    
+    /* Brand logos strip */
+    .brands-scroll {
+      animation: scroll 30s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    /* Floating WhatsApp */
+    .wa-float {
+      animation: pulse-wa 2s infinite;
+    }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+    
+    /* Smooth image */
+    .img-cover {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+    
+    /* Section titles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, #F97316, #FB923C);
+      border-radius: 2px;
+    }
+    
+    /* Feature icons */
+    .feature-icon {
+      background: linear-gradient(135deg, #1B7A3D, #2E9B55);
+    }
+    
+    /* Sticky header */
+    .header-scrolled {
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center gap-2 group">
+          <div class="w-11 h-11 lg:w-12 lg:h-12 rounded-full overflow-hidden border-2 border-agro-green shadow-md group-hover:scale-105 transition">
+            <img src="images/logo-mascot.jpeg" alt="AGRO-MOTOR" class="w-full h-full object-cover">
+          </div>
+          <div class="leading-tight">
+            <span class="font-display font-extrabold text-lg lg:text-xl text-agro-green-dark tracking-tight">AGRO-MOTOR</span>
+            <span class="block text-[10px] lg:text-xs font-semibold text-agro-orange uppercase tracking-wider">Maquinaria Agrícola y Accesorios</span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-1">
+          <a href="#inicio" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-agro-green transition rounded-lg hover:bg-green-50">Inicio</a>
+          <a href="#productos" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-agro-green transition rounded-lg hover:bg-green-50">Productos</a>
+          <a href="#nosotros" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-agro-green transition rounded-lg hover:bg-green-50">Nosotros</a>
+          <a href="#mision-vision" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-agro-green transition rounded-lg hover:bg-green-50">Misión y Visión</a>
+          <a href="#servicio-tecnico" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-agro-green transition rounded-lg hover:bg-green-50">Servicio Técnico</a>
+          <a href="#contacto" class="px-3 py-2 text-sm font-semibold text-gray-700 hover:text-agro-green transition rounded-lg hover:bg-green-50">Contacto</a>
+        </nav>
+
+        <!-- Right actions -->
+        <div class="flex items-center gap-3">
+          <!-- Search (visual only) -->
+          <div class="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-1.5 border border-gray-200">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" placeholder="Buscar productos..." class="bg-transparent border-none outline-none text-sm px-2 w-36 text-gray-600 placeholder-gray-400" id="searchInput">
+          </div>
+          
+          <!-- WhatsApp CTA -->
+          <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20quiero%20información%20sobre%20sus%20productos" 
+             target="_blank" rel="noopener"
+             class="hidden sm:inline-flex items-center gap-2 bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm px-4 py-2.5 rounded-full shadow-lg shadow-orange-200 transition transform hover:scale-105">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+
+          <!-- Mobile menu button -->
+          <button id="menuBtn" class="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-white shadow-2xl z-50 lg:hidden flex flex-col">
+      <div class="flex items-center justify-between p-4 border-b">
+        <span class="font-display font-bold text-agro-green-dark">Menú</span>
+        <button id="closeMenu" class="p-2 rounded-lg hover:bg-gray-100">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="flex flex-col p-4 gap-1">
+        <a href="#inicio" class="mobile-link px-4 py-3 font-semibold text-gray-700 hover:bg-green-50 hover:text-agro-green rounded-xl">Inicio</a>
+        <a href="#productos" class="mobile-link px-4 py-3 font-semibold text-gray-700 hover:bg-green-50 hover:text-agro-green rounded-xl">Productos</a>
+        <a href="#nosotros" class="mobile-link px-4 py-3 font-semibold text-gray-700 hover:bg-green-50 hover:text-agro-green rounded-xl">Nosotros</a>
+        <a href="#mision-vision" class="mobile-link px-4 py-3 font-semibold text-gray-700 hover:bg-green-50 hover:text-agro-green rounded-xl">Misión y Visión</a>
+        <a href="#servicio-tecnico" class="mobile-link px-4 py-3 font-semibold text-gray-700 hover:bg-green-50 hover:text-agro-green rounded-xl">Servicio Técnico</a>
+        <a href="#contacto" class="mobile-link px-4 py-3 font-semibold text-gray-700 hover:bg-green-50 hover:text-agro-green rounded-xl">Contacto</a>
+      </nav>
+      <div class="mt-auto p-4">
+        <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20quiero%20información%20sobre%20sus%20productos" 
+           target="_blank" rel="noopener"
+           class="flex items-center justify-center gap-2 w-full bg-agro-orange text-white font-bold py-3 rounded-xl">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir por WhatsApp
+        </a>
+      </div>
+    </div>
+    <div id="menuOverlay" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden"></div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section id="inicio" class="relative min-h-[90vh] lg:min-h-screen flex items-center pt-16 lg:pt-20 overflow-hidden">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img src="images/desmalezadora-shindaiwa.jpeg" alt="Agricultor con desmalezadora" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 hero-overlay"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-white/20">
+          <span class="w-2 h-2 bg-agro-orange rounded-full animate-pulse"></span>
+          Para pequeños y medianos agricultores del Ecuador
+        </div>
+        
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-6">
+          MAQUINARIA QUE<br>
+          <span class="text-agro-orange">IMPULSA TU CAMPO</span>
+        </h1>
+        
+        <p class="text-lg sm:text-xl text-white/90 mb-8 max-w-xl leading-relaxed">
+          Equipos agrícolas, accesorios y asesoría experta en un solo lugar. Calidad, confianza y servicio desde Milagro para todo el Ecuador.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#productos" 
+             class="inline-flex items-center justify-center gap-2 bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-base px-8 py-4 rounded-full shadow-xl shadow-orange-500/30 transition transform hover:scale-105">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            VER PRODUCTOS
+          </a>
+          <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20quiero%20información%20sobre%20sus%20productos" 
+             target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white font-bold text-base px-8 py-4 rounded-full border-2 border-white/40 transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            PEDIR POR WHATSAPP
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 animate-bounce hidden sm:block">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+  </section>
+
+  <!-- ========== MARCAS ========== -->
+  <section class="bg-white py-8 border-b border-gray-100 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6">Marcas que distribuimos</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-12">
+        <span class="font-display font-bold text-xl text-gray-700 tracking-tight">Shindaiwa</span>
+        <span class="font-display font-bold text-xl text-red-600 tracking-tight">Mitsubishi Motors</span>
+        <span class="font-display font-bold text-xl text-gray-800 tracking-tight">Husqvarna</span>
+        <span class="font-display font-bold text-xl text-orange-600 tracking-tight">STIHL</span>
+        <span class="font-display font-bold text-xl text-blue-700 tracking-tight">ECHO</span>
+        <span class="font-display font-bold text-xl text-amber-700 tracking-tight">BEAVER</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTOS CATEGORÍAS ========== -->
+  <section id="productos" class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-display font-extrabold text-3xl lg:text-4xl text-agro-green-dark section-title mx-auto">
+          NUESTROS PRODUCTOS
+        </h2>
+        <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
+          Equipos y herramientas para el pequeño y mediano agricultor. Calidad profesional para el campo ecuatoriano.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        
+        <!-- 1. Desmalezadoras -->
+        <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+            <img src="images/desmalezadora-shindaiwa.jpeg" alt="Desmalezadoras" class="img-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-xl text-agro-green-dark mb-2">Desmalezadoras</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Equipos ideales para limpieza de terrenos y maleza. Potencia y resistencia para el trabajo diario.</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Desmalezadoras.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm py-3 rounded-xl transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              PEDIR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Bombas de fumigar -->
+        <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+            <img src="images/echo-mb580.jpeg" alt="Bombas de fumigar" class="img-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-xl text-agro-green-dark mb-2">Bombas de Fumigar</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Nebulizadoras y pulverizadoras de alto rendimiento para aplicación de productos agrícolas.</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Bombas%20de%20Fumigar.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm py-3 rounded-xl transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              PEDIR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Motosierras -->
+        <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+            <img src="images/motosierra-stihl.jpeg" alt="Motosierras" class="img-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-xl text-agro-green-dark mb-2">Motosierras</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Equipos para poda, corte y trabajos forestales. Marcas líderes como STIHL y Husqvarna.</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Motosierras.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm py-3 rounded-xl transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              PEDIR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Podadoras -->
+        <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+            <img src="images/podadora-altuna.jpeg" alt="Podadoras" class="img-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-xl text-agro-green-dark mb-2">Podadoras</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Soluciones para poda de árboles y mantenimiento de cercos. Alcance y precisión profesional.</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Podadoras.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm py-3 rounded-xl transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              PEDIR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Bombas de riego -->
+        <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+            <img src="images/bomba-riego-gamoto.jpeg" alt="Bombas de riego" class="img-cover hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-xl text-agro-green-dark mb-2">Bombas de Riego</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Equipos para abastecimiento de agua en el campo. Potencia y confiabilidad para tus cultivos.</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Bombas%20de%20Riego.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm py-3 rounded-xl transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              PEDIR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Accesorios -->
+        <div class="product-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100 relative">
+            <img src="images/husqvarna-display.jpeg" alt="Accesorios" class="img-cover hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-xl text-agro-green-dark mb-2">Accesorios</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Cadenas, repuestos, aceites, herramientas y más. Todo lo que necesitas para mantener tu equipo.</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Accesorios%20y%20repuestos.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm py-3 rounded-xl transition">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              PEDIR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTOS DESTACADOS ========== -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-display font-extrabold text-3xl lg:text-4xl text-agro-green-dark section-title mx-auto">
+          PRODUCTOS DESTACADOS
+        </h2>
+        <p class="mt-6 text-lg text-gray-600">Equipos de alta demanda para el campo ecuatoriano</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Destacado 1: ECHO MB-580 -->
+        <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition">
+          <div class="aspect-square bg-white p-4 flex items-center justify-center">
+            <img src="images/echo-mb580.jpeg" alt="Nebulizadora ECHO MB-580" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-agro-orange uppercase tracking-wider">ECHO</span>
+            <h3 class="font-display font-bold text-lg text-gray-900 mt-1">Nebulizadora MB-580</h3>
+            <p class="text-sm text-gray-600 mt-2 mb-3">Motor profesional 58.2 cc · Tanque 23 L · Alcance 15 m</p>
+            <p class="text-agro-green font-bold text-sm mb-4">CONSULTAR DISPONIBILIDAD</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20la%20Nebulizadora%20ECHO%20MB-580.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-green hover:bg-agro-green-dark text-white font-bold text-sm py-2.5 rounded-xl transition">
+              CONSULTAR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- Destacado 2: Husqvarna T435 -->
+        <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition">
+          <div class="aspect-square bg-black p-4 flex items-center justify-center">
+            <img src="images/motosierra-husqvarna-t435.jpeg" alt="Motosierra Husqvarna T435" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-agro-orange uppercase tracking-wider">Husqvarna</span>
+            <h3 class="font-display font-bold text-lg text-gray-900 mt-1">Motosierra T435</h3>
+            <p class="text-sm text-gray-600 mt-2 mb-3">Motosierra profesional de alto rendimiento para trabajos de poda y corte.</p>
+            <p class="text-agro-green font-bold text-sm mb-4">CONSULTAR DISPONIBILIDAD</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20la%20Motosierra%20Husqvarna%20T435.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-green hover:bg-agro-green-dark text-white font-bold text-sm py-2.5 rounded-xl transition">
+              CONSULTAR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- Destacado 3: STIHL -->
+        <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition">
+          <div class="aspect-square bg-gray-100 overflow-hidden">
+            <img src="images/motosierra-stihl.jpeg" alt="Motosierra STIHL" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-agro-orange uppercase tracking-wider">STIHL</span>
+            <h3 class="font-display font-bold text-lg text-gray-900 mt-1">Motosierra Profesional</h3>
+            <p class="text-sm text-gray-600 mt-2 mb-3">Potencia y durabilidad para trabajos forestales y de poda intensiva.</p>
+            <p class="text-agro-green font-bold text-sm mb-4">CONSULTAR DISPONIBILIDAD</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Motosierras%20STIHL.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-green hover:bg-agro-green-dark text-white font-bold text-sm py-2.5 rounded-xl transition">
+              CONSULTAR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- Destacado 4: Bomba GAMOTO -->
+        <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition">
+          <div class="aspect-square bg-white p-4 flex items-center justify-center">
+            <img src="images/bomba-riego-gamoto.jpeg" alt="Bomba de riego GAMOTO" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-agro-orange uppercase tracking-wider">GAMOTO</span>
+            <h3 class="font-display font-bold text-lg text-gray-900 mt-1">Bomba de Riego</h3>
+            <p class="text-sm text-gray-600 mt-2 mb-3">Líderes en equipos de potencia. Importador exclusivo para el campo.</p>
+            <p class="text-agro-green font-bold text-sm mb-4">CONSULTAR DISPONIBILIDAD</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Bombas%20de%20Riego%20GAMOTO.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-green hover:bg-agro-green-dark text-white font-bold text-sm py-2.5 rounded-xl transition">
+              CONSULTAR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- Destacado 5: Cifarelli -->
+        <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition">
+          <div class="aspect-square bg-white p-4 flex items-center justify-center">
+            <img src="images/nebulizadora-cifarelli.jpeg" alt="Nebulizadora Cifarelli Nuvola" class="max-h-full max-w-full object-contain">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-agro-orange uppercase tracking-wider">CIFARELLI</span>
+            <h3 class="font-display font-bold text-lg text-gray-900 mt-1">Nebulizadora Nuvola</h3>
+            <p class="text-sm text-gray-600 mt-2 mb-3">Nebulizadora profesional de alto flujo para aplicaciones agrícolas exigentes.</p>
+            <p class="text-agro-green font-bold text-sm mb-4">CONSULTAR DISPONIBILIDAD</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20la%20Nebulizadora%20Cifarelli%20Nuvola.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-green hover:bg-agro-green-dark text-white font-bold text-sm py-2.5 rounded-xl transition">
+              CONSULTAR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- Destacado 6: Podadora Altuna -->
+        <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition">
+          <div class="aspect-square bg-gray-100 overflow-hidden">
+            <img src="images/podadora-altuna.jpeg" alt="Podadora Altuna" class="w-full h-full object-cover">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-agro-orange uppercase tracking-wider">ALTUNA</span>
+            <h3 class="font-display font-bold text-lg text-gray-900 mt-1">Podadora de Altura</h3>
+            <p class="text-sm text-gray-600 mt-2 mb-3">Solución profesional para poda de árboles y mantenimiento de altura.</p>
+            <p class="text-agro-green font-bold text-sm mb-4">CONSULTAR DISPONIBILIDAD</p>
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20estoy%20interesado%20en%20Podadoras%20Altuna.%20¿Podrían%20brindarme%20información%3F" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 w-full bg-agro-green hover:bg-agro-green-dark text-white font-bold text-sm py-2.5 rounded-xl transition">
+              CONSULTAR POR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MISIÓN Y VISIÓN ========== -->
+  <section id="mision-vision" class="py-16 lg:py-24 bg-gradient-to-br from-agro-green-dark via-agro-green to-agro-green-light text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+        
+        <!-- Misión -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-10 border border-white/20">
+          <div class="w-14 h-14 rounded-2xl bg-agro-orange flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl lg:text-3xl mb-4">NUESTRA MISIÓN</h2>
+          <p class="text-white/90 text-lg leading-relaxed">
+            Facilitar la mejor maquinaria agrícola a través de una experiencia digital rápida, confiable y con asesoría experta en un solo clic.
+          </p>
+        </div>
+
+        <!-- Visión -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-10 border border-white/20">
+          <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl lg:text-3xl mb-4">NUESTRA VISIÓN</h2>
+          <p class="text-white/90 text-lg leading-relaxed">
+            Ser la tienda en línea líder en maquinaria agrícola del país, reconocida por transformar la compra digital del campo mediante innovación, entregas rápidas y un servicio al cliente excepcional.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POR QUÉ AGRO-MOTOR ========== -->
+  <section id="nosotros" class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-display font-extrabold text-3xl lg:text-4xl text-agro-green-dark section-title mx-auto">
+          ¿POR QUÉ AGRO-MOTOR?
+        </h2>
+        <p class="mt-6 text-lg text-gray-600">Tu aliado confiable en maquinaria agrícola</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
+        
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">🚚</div>
+          <h3 class="font-bold text-gray-900 mb-2">Envíos a nivel nacional</h3>
+          <p class="text-sm text-gray-600">Desde Milagro hasta todo el Ecuador</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">🔧</div>
+          <h3 class="font-bold text-gray-900 mb-2">Asesoría técnica</h3>
+          <p class="text-sm text-gray-600">Expertos que te orientan en cada compra</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">📱</div>
+          <h3 class="font-bold text-gray-900 mb-2">Atención por WhatsApp</h3>
+          <p class="text-sm text-gray-600">Respuesta rápida y personalizada</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">🌱</div>
+          <h3 class="font-bold text-gray-900 mb-2">Soluciones para el campo</h3>
+          <p class="text-sm text-gray-600">Enfocados en el agricultor real</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">🛠️</div>
+          <h3 class="font-bold text-gray-900 mb-2">Maquinaria y accesorios</h3>
+          <p class="text-sm text-gray-600">Todo en un solo lugar</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl">💳</div>
+          <h3 class="font-bold text-gray-900 mb-2">Pago al recibir</h3>
+          <p class="text-sm text-gray-600">Facilidad y seguridad en tu compra</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICIO TÉCNICO ========== -->
+  <section id="servicio-tecnico" class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        
+        <div>
+          <h2 class="font-display font-extrabold text-3xl lg:text-4xl text-agro-green-dark mb-4">
+            SERVICIO TÉCNICO
+          </h2>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Mantenimiento y reparación de maquinaria agrícola de todas las marcas. Contamos con personal especializado y repuestos originales para mantener tu equipo siempre listo.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+              <span class="text-2xl">🔧</span>
+              <span class="font-semibold text-gray-800">Mantenimiento</span>
+            </div>
+            <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+              <span class="text-2xl">🛠️</span>
+              <span class="font-semibold text-gray-800">Reparación</span>
+            </div>
+            <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+              <span class="text-2xl">⚙️</span>
+              <span class="font-semibold text-gray-800">Repuestos</span>
+            </div>
+            <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+              <span class="text-2xl">👨‍🔧</span>
+              <span class="font-semibold text-gray-800">Asesoría técnica</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20necesito%20servicio%20técnico%20para%20mi%20maquinaria.%20¿Me%20pueden%20ayudar%3F" 
+             target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 mt-8 bg-agro-orange hover:bg-agro-orange-dark text-white font-bold px-6 py-3 rounded-full transition">
+            Solicitar servicio técnico
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img src="images/husqvarna-display.jpeg" alt="Servicio técnico Agro-Motor" class="w-full h-80 lg:h-96 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-agro-green-dark/80 to-transparent flex items-end p-6">
+            <p class="text-white font-semibold text-lg">Repuestos originales · Personal especializado · Equipos siempre listos</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COBERTURA ========== -->
+  <section class="py-16 lg:py-20 bg-agro-green-dark text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-40 h-40 border-4 border-white rounded-full"></div>
+      <div class="absolute bottom-10 right-10 w-60 h-60 border-4 border-white rounded-full"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6">
+        <span class="text-2xl">📍</span>
+        <span class="font-semibold">Milagro, Guayas</span>
+      </div>
+      
+      <h2 class="font-display font-extrabold text-3xl lg:text-4xl mb-4">
+        DE MILAGRO PARA TODO EL ECUADOR
+      </h2>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+        Atención principal en Milagro, Guayas, con envíos y entrega técnica a nivel nacional.
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+        <span class="bg-white/10 px-4 py-2 rounded-full">Guayas</span>
+        <span class="bg-white/10 px-4 py-2 rounded-full">Costa</span>
+        <span class="bg-white/10 px-4 py-2 rounded-full">Sierra</span>
+        <span class="bg-white/10 px-4 py-2 rounded-full">Oriente</span>
+        <span class="bg-white/10 px-4 py-2 rounded-full">Todo el país</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACTO ========== -->
+  <section id="contacto" class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-display font-extrabold text-3xl lg:text-4xl text-agro-green-dark section-title mx-auto">
+          CONTACTA CON AGRO-MOTOR
+        </h2>
+        <p class="mt-6 text-lg text-gray-600">Estamos listos para atenderte</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+        <div class="grid md:grid-cols-2">
+          
+          <div class="bg-agro-green p-8 lg:p-10 text-white">
+            <h3 class="font-display font-bold text-2xl mb-6">Información de contacto</h3>
+            
+            <div class="space-y-5">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm text-white/70">WhatsApp</p>
+                  <a href="https://wa.me/593968734687" target="_blank" class="font-bold text-lg hover:underline">+593 96 873 4687</a>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm text-white/70">Página web</p>
+                  <p class="font-bold text-lg">www.agro-motor.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm text-white/70">Ubicación</p>
+                  <p class="font-bold text-lg">Milagro, Guayas, Ecuador</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-8 lg:p-10 flex flex-col justify-center">
+            <h3 class="font-display font-bold text-xl text-gray-900 mb-3">¿Listo para potenciar tu campo?</h3>
+            <p class="text-gray-600 mb-6">Escríbenos por WhatsApp y te asesoramos con el equipo ideal para tus necesidades.</p>
+            
+            <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20quiero%20información%20sobre%20sus%20productos" 
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-lg py-4 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.02]">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              ESCRIBIR POR WHATSAPP
+            </a>
+            
+            <p class="text-xs text-gray-400 mt-4 text-center">Horario de atención: Lunes a Sábado</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-agro-green-dark text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-agro-orange">
+              <img src="images/logo-mascot.jpeg" alt="AGRO-MOTOR" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <span class="font-display font-extrabold text-xl">AGRO-MOTOR</span>
+              <span class="block text-xs text-agro-orange font-semibold uppercase">Maquinaria Agrícola y Accesorios</span>
+            </div>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed">
+            Tu aliado en maquinaria agrícola. Equipos de calidad para el pequeño y mediano agricultor ecuatoriano.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">Navegación</h4>
+          <ul class="space-y-2 text-white/80 text-sm">
+            <li><a href="#inicio" class="hover:text-agro-orange transition">Inicio</a></li>
+            <li><a href="#productos" class="hover:text-agro-orange transition">Productos</a></li>
+            <li><a href="#nosotros" class="hover:text-agro-orange transition">Nosotros</a></li>
+            <li><a href="#servicio-tecnico" class="hover:text-agro-orange transition">Servicio Técnico</a></li>
+            <li><a href="#contacto" class="hover:text-agro-orange transition">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">Contacto</h4>
+          <ul class="space-y-3 text-white/80 text-sm">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-agro-orange" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              +593 96 873 4687
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-agro-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              www.agro-motor.com
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-agro-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Milagro - Guayas - Ecuador
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTA -->
+        <div>
+          <h4 class="font-bold text-lg mb-4">¿Necesitas ayuda?</h4>
+          <p class="text-white/70 text-sm mb-4">Contáctanos ahora y recibe asesoría personalizada.</p>
+          <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor" 
+             target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 bg-agro-orange hover:bg-agro-orange-dark text-white font-bold text-sm px-5 py-3 rounded-full transition">
+            WhatsApp directo
+          </a>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/60">
+        <p>© 2026 AGRO-MOTOR. Todos los derechos reservados.</p>
+        <p class="font-medium text-white/80">Tu aliado en maquinaria agrícola.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== WHATSAPP FLOTANTE ========== -->
+  <a href="https://wa.me/593968734687?text=Hola%20Agro-Motor%2C%20quiero%20información%20sobre%20sus%20productos" 
+     target="_blank" rel="noopener"
+     class="wa-float fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold pl-4 pr-5 py-3 rounded-full shadow-2xl transition transform hover:scale-105"
+     aria-label="Pedir por WhatsApp">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="hidden sm:inline">PEDIR POR WHATSAPP</span>
+  </a>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenuFn() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFn);
+    menuOverlay.addEventListener('click', closeMenuFn);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenuFn));
+
+    // Simple search (visual filter)
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        // Placeholder for future product filtering
+        console.log('Buscando:', term);
+      });
+    }
+  </script>
+</body>
+</html>
