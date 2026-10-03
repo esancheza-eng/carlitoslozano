@@ -1,0 +1,192 @@
+/* =====================================================
+   AGRO-MOTOR · Personalización sobre Tessellate
+   Colores: verde campo, dorado y tierra
+===================================================== */
+
+:root {
+	--verde: #07582f;
+	--verde-claro: #0b7a42;
+	--verde-oscuro: #0f3d24;
+	--oro: #e0a526;
+	--tierra: #6b4a2b;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Barra de navegación ---------- */
+#topbar {
+	position: fixed; top: 0; left: 0; right: 0; z-index: 10001;
+	display: flex; align-items: center; justify-content: space-between;
+	padding: 0.7em 1.5em;
+	color: #fff;
+	transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+#topbar.solid {
+	background: rgba(9, 40, 23, 0.96);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+#topbar a { color: #fff; text-decoration: none; border: 0; }
+#topbar .brand { display: flex; align-items: center; gap: 0.6em; font-weight: 700; letter-spacing: 0.08em; line-height: 1.2; }
+#topbar .brand small { display: block; font-weight: 300; font-size: 0.62em; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; }
+#topbar .mark { display: inline-grid; place-items: center; width: 2.4em; height: 2.4em; border: 2px solid #fff; border-radius: 6px; font-size: 0.8em; }
+#menu { display: flex; gap: 2em; }
+#menu a { font-size: 0.75em; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.9; }
+#menu a:hover { color: var(--oro); opacity: 1; }
+#topbar .tools { display: flex; gap: 0.5em; }
+#topbar .tool {
+	background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 6px; padding: 0 0.9em; height: 2.4em; line-height: 2.4em; cursor: pointer;
+	font: inherit; font-size: 0.9em; box-shadow: none; letter-spacing: 0;
+	display: inline-flex; align-items: center; gap: 0.4em; text-transform: none;
+}
+#topbar .tool:hover { border-color: var(--oro); color: var(--oro); background: transparent; }
+#topbar .tool b { background: var(--oro); color: #1d2a22; border-radius: 999px; padding: 0 0.5em; font-size: 0.8em; line-height: 1.6em; }
+#menuToggle { display: none !important; }
+
+/* ---------- Portada ---------- */
+#header {
+	background-image:
+		url("images/overlay.png"),
+		linear-gradient(180deg, rgba(7, 40, 22, 0.55), rgba(7, 40, 22, 0.8)),
+		url("../../images/desbrozadora-campo.jpg");
+	background-size: auto, cover, cover;
+	background-position: top left, center, center;
+	padding: 12em 1.5em 9em 1.5em;
+}
+#header header h1 { font-size: 3.2em; font-weight: 700; line-height: 1.15em; }
+#header .kicker, .kicker {
+	display: inline-block; margin-bottom: 1.2em;
+	font-size: 0.8em; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--oro);
+}
+#header .brands-line { text-align: center; padding: 0; margin-top: 2.5em; font-size: 0.75em; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.75; }
+.button.alt-light { background: transparent; box-shadow: inset 0 0 0 1px #fff; color: #fff !important; }
+.button.alt-light:hover { background: rgba(255,255,255,0.12); }
+
+/* ---------- Botones en verde ---------- */
+.button { background-color: var(--verde); }
+.button:hover { background-color: var(--verde-claro); }
+.button:active { background-color: var(--verde-oscuro); }
+.dark .button { background-color: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7); }
+.dark .button:hover { background-color: rgba(255,255,255,0.15); }
+#header .button:not(.alt-light) { background: #fff; color: var(--verde) !important; box-shadow: none; }
+#header .button:not(.alt-light):hover { background: var(--oro); color: #1d2a22 !important; }
+
+/* ---------- Fondos de secciones (degradados del campo) ---------- */
+.main > .content.style1 {
+	background: url("images/bgtr.svg") top right no-repeat, url("images/bgbl.svg") bottom left no-repeat,
+		url("images/overlay.png"), linear-gradient(45deg, #0f3d24, #07582f, #3f7d34);
+}
+.main > .content.style2 {
+	background: url("images/bgtr.svg") top right no-repeat, url("images/bgbl.svg") bottom left no-repeat,
+		url("images/overlay.png"), linear-gradient(45deg, #13251a, #1f3b28, #2f5a35);
+}
+.main > .content.style3 {
+	background: url("images/bgtr.svg") top right no-repeat, url("images/bgbl.svg") bottom left no-repeat,
+		url("images/overlay.png"), linear-gradient(45deg, #4a3220, #6b4a2b, #8a6a2c);
+}
+.main > header h2 { font-weight: 400; color: var(--verde-oscuro); }
+.center { text-align: center; }
+
+/* ---------- Productos ---------- */
+.search-box { position: relative; max-width: 28em; margin: 0 auto 2.5em auto; }
+.search-box .icon { position: absolute; left: 1em; top: 50%; transform: translateY(-50%); opacity: 0.7; color: #fff; }
+.search-box input[type="search"] {
+	padding-left: 2.8em; background: rgba(255,255,255,0.1); color: #fff;
+	border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; height: 3em; width: 100%;
+	-webkit-appearance: none; appearance: none;
+}
+.search-box input::placeholder { color: rgba(255,255,255,0.7); }
+.search-box input:focus { border-color: var(--oro); box-shadow: none; }
+
+.product {
+	position: relative; display: block; overflow: hidden; cursor: pointer;
+	aspect-ratio: 1 / 1; border-radius: 6px; background: #000;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.product img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, opacity 0.3s ease; opacity: 0.95; }
+.product:hover img { transform: scale(1.07); opacity: 0.45; }
+.product .info {
+	position: absolute; left: 0; right: 0; bottom: 0; padding: 1.3em 1.4em;
+	background: linear-gradient(0deg, rgba(0,0,0,0.85), rgba(0,0,0,0.0)); text-align: left;
+}
+.product .tag { font-size: 0.65em; font-weight: 700; letter-spacing: 0.2em; color: var(--oro); }
+.product h3 { font-size: 1.25em !important; margin: 0.1em 0 0.2em 0; color: #fff; }
+.product p { font-size: 0.85em; line-height: 1.5em; margin: 0; max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease; }
+.product:hover p { max-height: 4em; opacity: 0.9; }
+.product .add {
+	display: inline-block; margin-top: 0.8em; font-size: 0.7em; letter-spacing: 0.15em; text-transform: uppercase;
+	border: 1px solid rgba(255,255,255,0.7); border-radius: 6px; padding: 0.4em 1em; color: #fff;
+}
+.product:hover .add { background: var(--oro); border-color: var(--oro); color: #1d2a22; }
+.no-results { display: none; text-align: center; padding: 2em 0; }
+
+/* ---------- Servicio técnico ---------- */
+.image.featured.banner img { width: 100%; height: 22em; object-fit: cover; border-radius: 6px; }
+ul.checks { list-style: none; padding: 0; }
+ul.checks li { position: relative; padding-left: 1.6em; margin-bottom: 0.6em; }
+ul.checks li:before { content: "✓"; position: absolute; left: 0; color: var(--oro); font-weight: 700; }
+
+/* ---------- Contacto ---------- */
+.contact-info { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 1em 2.5em; margin: 0 0 3em 0; }
+.contact-info li { display: flex; align-items: center; gap: 0.6em; padding: 0; }
+.contact-info .icon { color: var(--verde); font-size: 1.2em; }
+.contact-info a { color: inherit; border: 0; }
+
+/* ---------- Carrito ---------- */
+.cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10002; }
+.cart-overlay.active { opacity: 1; pointer-events: auto; }
+.cart-panel {
+	position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 400px; background: #fff; z-index: 10003;
+	transform: translateX(100%); transition: transform 0.35s ease; display: flex; flex-direction: column; color: #555;
+}
+.cart-panel.active { transform: none; }
+.cart-head { background: var(--verde); color: #fff; padding: 1em 1.4em; display: flex; justify-content: space-between; align-items: center; }
+.cart-head strong { color: #fff; }
+.cart-head button { background: none; box-shadow: none; color: #fff; font-size: 1.8em; padding: 0; height: auto; line-height: 1; cursor: pointer; }
+.cart-head button:hover { background: none; }
+.cart-items { flex: 1; overflow: auto; padding: 0.5em 1.4em; }
+.cart-item { display: flex; gap: 0.9em; align-items: center; padding: 0.8em 0; border-bottom: 1px solid #eee; }
+.cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; }
+.cart-item .n { flex: 1; font-weight: 400; line-height: 1.3em; color: #333; }
+.cart-item .remove { background: none; box-shadow: none; color: #b33; padding: 0; height: auto; line-height: 1.6em; font-size: 0.75em; letter-spacing: 0; text-transform: none; cursor: pointer; }
+.cart-item .remove:hover { background: none; text-decoration: underline; }
+.qty { display: flex; align-items: center; gap: 0.4em; }
+.qty button { width: 1.9em; height: 1.9em; line-height: 1.9em; padding: 0; background: #f2f2f2; color: #333; box-shadow: none; border-radius: 6px; cursor: pointer; letter-spacing: 0; }
+.qty button:hover { background: #e2e2e2; }
+.empty { text-align: center; padding: 3em 1em; color: #888; }
+.cart-foot { padding: 1em 1.4em 1.4em 1.4em; border-top: 1px solid #eee; font-size: 0.9em; }
+.cart-foot p { margin-bottom: 1em; }
+.wa-btn { width: 100%; background: #25d366; color: #fff; border-radius: 6px; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.wa-btn:hover { background: #1fb457; }
+.wa-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.wa-float {
+	position: fixed; right: 1.2em; bottom: 1.2em; z-index: 10000; width: 3.4em; height: 3.4em; border-radius: 50%;
+	background: #25d366; color: #fff !important; display: grid; place-items: center; font-size: 1.3em;
+	box-shadow: 0 4px 14px rgba(0,0,0,0.3); border: 0; text-decoration: none;
+}
+.wa-float:before { font-size: 1.4em; }
+.toast {
+	position: fixed; bottom: 1.5em; left: 50%; transform: translate(-50%, 200%); z-index: 10004;
+	background: var(--verde); color: #fff; padding: 0.6em 1.3em; border-radius: 6px; transition: transform 0.3s ease;
+}
+.toast.show { transform: translate(-50%, 0); }
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1000px) {
+	#menu { gap: 1.2em; }
+}
+@media screen and (max-width: 736px) {
+	#topbar { background: rgba(9, 40, 23, 0.96); padding: 0.6em 1em; }
+	#menuToggle { display: inline-flex !important; }
+	#menu {
+		position: fixed; top: 3.6em; left: 0; right: 0; flex-direction: column; gap: 0;
+		background: rgba(9, 40, 23, 0.98); max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+	}
+	#menu.open { max-height: 20em; }
+	#menu a { padding: 1em; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); }
+	#header { padding: 8em 1em 5em 1em; }
+	#header header h1 { font-size: 2.2em; }
+	.product p { max-height: 4em; opacity: 0.9; }
+	.image.featured.banner img { height: 14em; }
+}
